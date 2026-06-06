@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ETL — Geeta Maharana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">GM</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+    </ul>
+  </nav>
+
+  <div class="detail-container">
+
+    <div class="breadcrumb">
+      <a href="skills.html">Skills</a> &nbsp;/&nbsp; Data Engineering &nbsp;/&nbsp; ETL
+    </div>
+
+    <h1>ETL</h1>
+    <span class="detail-tag">Data Engineering</span>
+
+    <!-- WHAT IS ETL -->
+    <div class="detail-section">
+      <h2>What is ETL?</h2>
+      <p>
+        ETL stands for <strong>Extract, Transform, Load</strong> — a three-step process used to 
+        move data from one or more source systems into a destination, like a data warehouse or database, 
+        in a clean, structured, and usable form.
+      </p>
+    </div>
+
+    <!-- DIAGRAM -->
+    <div class="etl-diagram">
+      <div class="etl-step">
+        <div class="step-label">Step 1</div>
+        <div class="step-name">Extract</div>
+      </div>
+      <div class="etl-arrow">→</div>
+      <div class="etl-step">
+        <div class="step-label">Step 2</div>
+        <div class="step-name">Transform</div>
+      </div>
+      <div class="etl-arrow">→</div>
+      <div class="etl-step">
+        <div class="step-label">Step 3</div>
+        <div class="step-name">Load</div>
+      </div>
+    </div>
+
+    <!-- EACH STEP -->
+    <div class="detail-section">
+      <h2>Breaking it down</h2>
+      <p>
+        <strong>Extract</strong> — Pull raw data from sources: databases, APIs, flat files (CSV, JSON), logs, or third-party systems.
+        <br><br>
+        <strong>Transform</strong> — Clean, filter, deduplicate, join, and reshape that data into the format your destination needs.
+        This is where most of the business logic lives: renaming columns, handling nulls, converting data types, aggregating records.
+        <br><br>
+        <strong>Load</strong> — Write the transformed data into the target: a data warehouse (like Redshift or BigQuery), a database, 
+        or a file storage system like AWS S3.
+      </p>
+    </div>
+
+    <!-- MY EXPERIENCE -->
+    <div class="detail-section">
+      <h2>My Experience</h2>
+      <p>
+        <!-- PLACEHOLDER: Paste your own experience here -->
+        At Amazon, I worked on designing ETL workflows that moved operational data through transformation
+        layers to support analytics and ML tooling pipelines. I helped build and manage the flow from raw 
+        source data to structured, query-ready outputs.
+        <br><br>
+        <em>(Add your own details here — what specific datasets, what tools you used, what problem it solved.)</em>
+      </p>
+    </div>
+
+    <!-- EXAMPLE -->
+    <div class="detail-section">
+      <h2>A Simple Example</h2>
+      <p style="margin-bottom:1rem;">
+        Here's a basic Python ETL example — extracting from a CSV, transforming it, and loading into a new file:
+      </p>
+      <div class="example-box">
+<span class="comment"># EXTRACT</span>
+import csv
+
+raw_data = []
+with open('sales_raw.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        raw_data.append(row)
+
+<span class="comment"># TRANSFORM</span>
+transformed = []
+for row in raw_data:
+    if row['revenue']:  <span class="comment"># skip blank rows</span>
+        transformed.append({
+            'date': row['date'].strip(),
+            'revenue': float(row['revenue']),
+            'region': row['region'].upper()
+        })
+
+<span class="comment"># LOAD</span>
+with open('sales_clean.csv', 'w', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=['date','revenue','region'])
+    writer.writeheader()
+    writer.writerows(transformed)
+
+print(f"Loaded {len(transformed)} records.")
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Geeta Maharana &nbsp;·&nbsp; Boston, MA &nbsp;·&nbsp; Built with curiosity</p>
+  </footer>
+
+</body>
+</html>
