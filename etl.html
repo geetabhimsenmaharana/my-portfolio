@@ -71,12 +71,65 @@
     <div class="detail-section">
       <h2>My Experience</h2>
       <p>
-        <!-- PLACEHOLDER: Paste your own experience here -->
-        At Amazon, I worked on designing ETL workflows that moved operational data through transformation
-        layers to support analytics and ML tooling pipelines. I helped build and manage the flow from raw 
-        source data to structured, query-ready outputs.
+        I designed and implemented an automated ETL framework to solve a real business problem: 
+        a team was manually processing over <strong>120 Excel files</strong> from different sources, 
+        each with inconsistent column names, missing values, special characters, and formatting issues. 
+        The goal was to convert all of them into a single standardized template that a downstream application could consume.
+      </p>
+    </div>
+
+    <!-- SITUATION -->
+    <div class="detail-section">
+      <h2>The Problem</h2>
+      <p>
+        Every file came in differently — some called it <em>Customer ID</em>, others <em>Cust_ID</em>, 
+        others <em>CustomerInfoID</em>. Teams were doing manual copy-paste to reconcile them, which was 
+        slow, error-prone, and impossible to scale. The business needed one clean, trusted output — automatically.
+      </p>
+    </div>
+
+    <!-- SOLUTION -->
+    <div class="detail-section">
+      <h2>What I Built</h2>
+      <p>
+        I developed a <strong>metadata-driven ETL automation framework</strong> using VBA and Excel automation. 
+        Here's how each phase worked:
         <br><br>
-        <em>(Add your own details here — what specific datasets, what tools you used, what problem it solved.)</em>
+        <strong>Extract —</strong> The framework automatically scanned source directories, identified incoming Excel files, 
+        opened each workbook, and extracted data regardless of structure variation.
+        <br><br>
+        <strong>Transform —</strong> A configurable mapping workbook defined how each source column mapped to the 
+        standardized target field. During transformation, the framework handled column mapping, null value handling, 
+        special character removal, whitespace trimming, format standardization, and business rule enforcement.
+        <br><br>
+        <strong>Load —</strong> Transformed records were automatically written into a standardized output template, 
+        saved to processing folders, and tracked for status. Files that failed validation were automatically 
+        isolated into a separate folder without impacting successful records.
+        <br><br>
+        <strong>Error Handling & Logging —</strong> Every run generated a full processing report: total files processed, 
+        successful completions, failures, validation exceptions, and error categories — giving the team full operational visibility.
+      </p>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="detail-section">
+      <h2>Results</h2>
+      <p>
+        ✦ &nbsp;Reduced manual effort by approximately <strong>50%</strong><br><br>
+        ✦ &nbsp;Eliminated repetitive copy-paste operations entirely<br><br>
+        ✦ &nbsp;Improved data consistency and standardization across all 120+ files<br><br>
+        ✦ &nbsp;Achieved near-<strong>100% processing accuracy</strong> through automated validation<br><br>
+        ✦ &nbsp;Enhanced auditability through structured logging and error reporting
+      </p>
+    </div>
+
+    <!-- CONCEPTS -->
+    <div class="detail-section">
+      <h2>Data Engineering Concepts Applied</h2>
+      <p>
+        ETL Design &nbsp;·&nbsp; Metadata-Driven Mapping &nbsp;·&nbsp; Data Cleansing &nbsp;·&nbsp; 
+        Data Validation &nbsp;·&nbsp; Exception Handling &nbsp;·&nbsp; Batch Processing &nbsp;·&nbsp; 
+        File-Based Data Pipelines &nbsp;·&nbsp; Logging & Monitoring &nbsp;·&nbsp; Process Automation
       </p>
     </div>
 
