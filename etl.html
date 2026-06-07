@@ -69,110 +69,193 @@
 
     <!-- MY EXPERIENCE -->
     <div class="detail-section">
-      <h2>My Experience</h2>
-      <p>
-        I designed and implemented an automated ETL framework to solve a real business problem: 
-        a team was manually processing over <strong>120 Excel files</strong> from different sources, 
-        each with inconsistent column names, missing values, special characters, and formatting issues. 
-        The goal was to convert all of them into a single standardized template that a downstream application could consume.
-      </p>
-    </div>
+      <!-- DIAGRAM -->
 
-    <!-- SITUATION -->
-    <div class="detail-section">
-      <h2>The Problem</h2>
-      <p>
-        Every file came in differently — some called it <em>Customer ID</em>, others <em>Cust_ID</em>, 
-        others <em>CustomerInfoID</em>. Teams were doing manual copy-paste to reconcile them, which was 
-        slow, error-prone, and impossible to scale. The business needed one clean, trusted output — automatically.
-      </p>
-    </div>
+      <div class="etl-step">
+        <div class="step-label"> <h2> AMAZON PROJECT</h2></div>
+        <div class="step-name">Metadata-Driven ETL Pipeline for Data Standardization</div>
+      </div>
 
-    <!-- SOLUTION -->
-    <div class="detail-section">
-      <h2>What I Built</h2>
-      <p>
-        I developed a <strong>metadata-driven ETL automation framework</strong> using VBA and Excel automation. 
-        Here's how each phase worked:
-        <br><br>
-        <strong>Extract —</strong> The framework automatically scanned source directories, identified incoming Excel files, 
-        opened each workbook, and extracted data regardless of structure variation.
-        <br><br>
-        <strong>Transform —</strong> A configurable mapping workbook defined how each source column mapped to the 
-        standardized target field. During transformation, the framework handled column mapping, null value handling, 
-        special character removal, whitespace trimming, format standardization, and business rule enforcement.
-        <br><br>
-        <strong>Load —</strong> Transformed records were automatically written into a standardized output template, 
-        saved to processing folders, and tracked for status. Files that failed validation were automatically 
-        isolated into a separate folder without impacting successful records.
-        <br><br>
-        <strong>Error Handling & Logging —</strong> Every run generated a full processing report: total files processed, 
-        successful completions, failures, validation exceptions, and error categories — giving the team full operational visibility.
-      </p>
+      <h3>Situation</h3>
+      <p>A business team was responsible for processing more than 120 Excel files received from various sources. Each file contained customer-related information but followed different formats and structures.</p>
+      <p>Common challenges included:</p>
+      <ul>
+        <li>Inconsistent column names across files</li>
+        <li>Missing values and blank fields</li>
+        <li>Special characters and invalid symbols</li>
+        <li>Formatting inconsistencies</li>
+        <li>Manual copy-and-paste operations</li>
+        <li>High risk of human error</li>
+        <li>Significant processing time</li>
+      </ul>
+      <p>The business required all source files to be converted into a single standardized template that could be consumed by a downstream application.</p>
+
+      <h3>Task</h3>
+      <p>Design and implement an automated solution capable of:</p>
+      <ul>
+        <li>Processing over 120 source files</li>
+        <li>Mapping inconsistent source columns to standardized target fields</li>
+        <li>Performing data cleansing and validation</li>
+        <li>Loading transformed data into a standard template</li>
+        <li>Tracking processing status</li>
+        <li>Generating error reports and processing metrics</li>
+        <li>Eliminating manual intervention</li>
+      </ul>
+
+      <h3>Solution</h3>
+      <p>I developed a metadata-driven ETL automation framework using VBA and Excel automation.</p>
+
+      <h3>Extract Phase</h3>
+      <p>The solution automatically:</p>
+      <ul>
+        <li>Scanned source directories</li>
+        <li>Identified incoming Excel files</li>
+        <li>Opened and read source workbooks</li>
+        <li>Extracted data from varying file structures</li>
+        <li>Captured source metadata for processing</li>
+      </ul>
+
+      <h3>Transform Phase</h3>
+      <p>A configurable mapping workbook was created to standardize source-to-target field relationships.</p>
+      <p>Examples:</p>
+      <div class="mapping-table">
+        <div class="mapping-source">
+          <div class="mapping-label">Source Column</div>
+          <div>Customer ID</div>
+          <div>Cust_ID</div>
+          <div>CustomerInfoID</div>
+        </div>
+        <div class="mapping-arrow">→</div>
+        <div class="mapping-target">
+          <div class="mapping-label">Target Column</div>
+          <div>Customer_ID</div>
+        </div>
+      </div>
+      <p>During transformation, the framework performed:</p>
+      <ul>
+        <li>Column mapping</li>
+        <li>Data cleansing</li>
+        <li>Null value handling</li>
+        <li>Removal of special characters</li>
+        <li>Whitespace trimming</li>
+        <li>Format standardization</li>
+        <li>Data validation checks</li>
+        <li>Business rule enforcement</li>
+      </ul>
+      <p>This ensured all records complied with the target template requirements.</p>
+
+      <h3>Load Phase</h3>
+      <p>The transformed data was automatically loaded into a standardized output template. The framework:</p>
+      <ul>
+        <li>Populated target worksheets</li>
+        <li>Preserved required structure</li>
+        <li>Generated output files</li>
+        <li>Saved completed files to processing folders</li>
+      </ul>
+
+      <h3>Error Handling and Logging</h3>
+      <p>To improve operational reliability, I implemented a complete exception-handling framework. Features included:</p>
+      <ul>
+        <li>Error logging</li>
+        <li>Failed-file tracking</li>
+        <li>Processed-file tracking</li>
+        <li>Exception reporting</li>
+        <li>Validation error identification</li>
+      </ul>
+      <p>Folder Structure:</p>
+      <ul>
+        <li>Input Folder</li>
+        <li>Processed Folder</li>
+        <li>Failed Folder</li>
+        <li>Error Log Repository</li>
+      </ul>
+      <p>Files that failed validation were automatically isolated for investigation without impacting successful processing.</p>
+
+      <h3>Reporting and Monitoring</h3>
+      <p>The framework generated processing metrics including:</p>
+      <ul>
+        <li>Total files processed</li>
+        <li>Successfully completed files</li>
+        <li>Failed files</li>
+        <li>Validation exceptions</li>
+        <li>Error categories</li>
+      </ul>
+      <p>This provided operational visibility and simplified troubleshooting.</p>
     </div>
 
     <!-- RESULTS -->
     <div class="detail-section">
       <h2>Results</h2>
-      <p>
-        ✦ &nbsp;Reduced manual effort by approximately <strong>50%</strong><br><br>
-        ✦ &nbsp;Eliminated repetitive copy-paste operations entirely<br><br>
-        ✦ &nbsp;Improved data consistency and standardization across all 120+ files<br><br>
-        ✦ &nbsp;Achieved near-<strong>100% processing accuracy</strong> through automated validation<br><br>
-        ✦ &nbsp;Enhanced auditability through structured logging and error reporting
-      </p>
-    </div>
+      <h3>Business Impact</h3>
+      <ul>
+        <li>Reduced manual effort by approximately 50%</li>
+        <li>Eliminated repetitive copy-and-paste activities</li>
+        <li>Improved data consistency and standardization</li>
+        <li>Increased processing speed</li>
+        <li>Enhanced auditability through logging and reporting</li>
+        <li>Achieved near-100% processing accuracy through automated validation</li>
+      </ul>
 
-    <!-- CONCEPTS -->
-    <div class="detail-section">
-      <h2>Data Engineering Concepts Applied</h2>
-      <p>
-        ETL Design &nbsp;·&nbsp; Metadata-Driven Mapping &nbsp;·&nbsp; Data Cleansing &nbsp;·&nbsp; 
-        Data Validation &nbsp;·&nbsp; Exception Handling &nbsp;·&nbsp; Batch Processing &nbsp;·&nbsp; 
-        File-Based Data Pipelines &nbsp;·&nbsp; Logging & Monitoring &nbsp;·&nbsp; Process Automation
-      </p>
+      <h3>Data Engineering Concepts Demonstrated</h3>
+      <ul>
+        <li>ETL Design</li>
+        <li>Data Extraction</li>
+        <li>Data Transformation</li>
+        <li>Data Loading</li>
+        <li>Metadata-Driven Mapping</li>
+        <li>Data Cleansing</li>
+        <li>Data Validation</li>
+        <li>Exception Handling</li>
+        <li>Logging and Monitoring</li>
+        <li>Batch Processing</li>
+        <li>Process Automation</li>
+        <li>File-Based Data Pipelines</li>
+        <li>Reporting and Operational Metrics</li>
+      </ul>
+      <p>This project demonstrates how ETL principles can be applied to transform unstructured and inconsistent source data into a standardized, reliable, and business-ready format through automation.</p>
     </div>
 
     <!-- EXAMPLE -->
     <div class="detail-section">
       <h2>A Simple Example</h2>
       <p style="margin-bottom:1rem;">
-        Here's a basic Python ETL example — extracting from a CSV, transforming it, and loading into a new file:
+        Here's a my AMAZON ETL project — extracting from a EXCEL, transforming it, and loading into a new file:
       </p>
       <div class="example-box">
-<span class="comment"># EXTRACT</span>
-import csv
+          <span class="comment"># EXTRACT</span>
 
-raw_data = []
-with open('sales_raw.csv', 'r') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        raw_data.append(row)
 
-<span class="comment"># TRANSFORM</span>
-transformed = []
-for row in raw_data:
-    if row['revenue']:  <span class="comment"># skip blank rows</span>
-        transformed.append({
-            'date': row['date'].strip(),
-            'revenue': float(row['revenue']),
-            'region': row['region'].upper()
-        })
+          <span class="comment"># TRANSFORM</span>
 
-<span class="comment"># LOAD</span>
-with open('sales_clean.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['date','revenue','region'])
-    writer.writeheader()
-    writer.writerows(transformed)
 
-print(f"Loaded {len(transformed)} records.")
+          <span class="comment"># LOADING</span>
+
+          <br><br>My goal is to share a real working project demo with you all here shortly. Until then, see you!
       </div>
     </div>
 
   </div>
 
   <footer>
-    <p>Geeta Maharana &nbsp;·&nbsp; Boston, MA &nbsp;·&nbsp; Built with curiosity</p>
+    <div class="footer-name">Geeta Maharana</div>
+    <div class="footer-location">Boston, MA</div>
+
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/geetabhimsenmaharana/?skipRedirect=true" target="_blank">LinkedIn</a>
+      <a href="https://github.com/geetabhimsenmaharana" target="_blank">GitHub</a>
+      <a href="mailto:maharana.g@northeastern.edu">Email</a>
+    </div>
+
+    <div class="footer-contact">
+      <a href="mailto:maharana.g@northeastern.edu">maharana.g@northeastern.edu</a>
+      &nbsp;·&nbsp;
+      <a href="tel:+18574215866">+1 857-421-5866</a>
+    </div>
+
+    <div class="footer-tagline">Built with curiosity</div>
+
+    <div class="footer-name">Good ETL is invisible. Nobody praises the pipeline that ran cleanly at 2am and loaded 50,000 records without a single error. Design for that. Log everything, isolate failures, never let one bad record corrupt the whole batch. Your future self at 9am will thank you.</div>
+
   </footer>
 
 </body>
