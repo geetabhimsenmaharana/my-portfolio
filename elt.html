@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ETL — Geeta Maharana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">GM</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+    </ul>
+  </nav>
+
+
+    <div class="detail-container">
+
+      <div class="breadcrumb">
+        <a href="skills.html">Skills</a> &nbsp;/&nbsp; Data Engineering &nbsp;/&nbsp; ELT
+      </div>
+  
+    <!-- LAYERED DATA ARCHITECTURE -->
+    <div class="detail-section">
+      <h2>ELT</h2>
+
+      <p>
+        A modern multi-layer data architecture designed to ensure scalability, traceability, and analytics readiness.
+        The system follows a Bronze → Silver → Gold pattern.
+      </p>
+
+      <div class="etl-diagram">
+
+        <div class="etl-step">
+          <div class="step-label">Bronze Layer</div>
+          <div class="step-name">Raw Data</div>
+        </div>
+
+        <div class="etl-arrow">→</div>
+
+        <div class="etl-step">
+          <div class="step-label">Silver Layer</div>
+          <div class="step-name">Transform</div>
+        </div>
+
+        <div class="etl-arrow">→</div>
+
+        <div class="etl-step">
+          <div class="step-label">Gold Layer</div>
+          <div class="step-name">Analytics</div>
+        </div>
+
+      </div>
+
+      <h3>🔹 Raw Layer (Bronze)</h3>
+      <ul>
+        <li>API data ingestion from external systems</li>
+        <li>Google Sheets used as raw landing zone</li>
+        <li>No transformation applied at this stage</li>
+        <li>Preserves source-of-truth data for auditability</li>
+      </ul>
+
+      <h3>🔹 Transformation Layer (Silver)</h3>
+      <ul>
+        <li>JSON parsing and flattening of API responses</li>
+        <li>Date standardization (e.g., Aug 2026 → structured format)</li>
+        <li>Numeric normalization and type casting</li>
+        <li>Schema selection and column filtering</li>
+        <li>Business rule application and validation</li>
+      </ul>
+
+      <h3>🔹 Output Layer (Gold)</h3>
+      <ul>
+        <li>Analytics-ready structured dataset</li>
+        <li>Clean and formatted consumption layer</li>
+        <li>Optimized for reporting and dashboards</li>
+        <li>Standardized output across multiple sources</li>
+      </ul>
+
+    </div>
+
+    <div class="detail-section">
+      <H1>LAYERED DATA ARCHITECTURE</H1>
+
+      <h2>Architecture Diagram and Overview</h2>
+      <img src="images/img2.png" alt="ETL Architecture Diagram" class="etl-image" />
+    
+      <h2>Architecture Diagram and Key Benefits</h2>
+      <img src="images/img1.png" alt="ETL Architecture Diagram" class="etl-image" />
+      
+    </div>
+
+
+    <!-- STAR SECTION -->
+    <div class="detail-section">
+      <h1>Project</h1>
+      <h2>Multi-Site Data Pipeline </h2>
+
+      <h3>S — Situation</h3>
+      <p>
+        Multiple site-level production data points were stored in an external API system with inconsistent structure,
+        requiring a scalable ingestion and transformation solution.
+      </p>
+
+      <h3>T — Task</h3>
+      <p>
+        Design a config-driven pipeline that extracts API data, stores raw records, applies structured transformations,
+        and produces analytics-ready datasets.
+      </p>
+
+      <h3>A — Action</h3>
+      <ul>
+        <li><strong>Ingestion (Bronze Layer)</strong> — Built API integration with authentication and multi-site iteration logic</li>
+        <li>Stored raw API responses in Google Sheets for traceability and reprocessing</li>
+        <li><strong>Transformation (Silver Layer)</strong> — Parsed JSON into structured tables</li>
+        <li>Applied date standardization, numeric normalization, and schema mapping</li>
+        <li>Enforced business rules and data validation checks</li>
+        <li><strong>Output (Gold Layer)</strong> — Generated clean, analytics-ready datasets</li>
+        <li>Standardized outputs across all sites for reporting consistency</li>
+      </ul>
+
+      <h3>R — Result</h3>
+      <ul>
+        <li>Built reusable, scalable data pipeline framework</li>
+        <li>Improved data consistency across multiple sources</li>
+        <li>Enabled structured separation of raw vs curated data</li>
+        <li>Reduced manual intervention and improved maintainability</li>
+      </ul>
+
+      <h3>L — Learning</h3>
+      <ul>
+        <li>Data pipelines work best as layered refinement systems, not single-step ETL jobs</li>
+        <li>Raw data preservation is essential for auditability and recovery</li>
+        <li>Metadata-driven design improves scalability and flexibility</li>
+        <li>Modern architectures follow Bronze / Silver / Gold lakehouse patterns</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-name">Geeta Maharana</div>
+    <div class="footer-location">Boston, MA</div>
+
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/geetabhimsenmaharana/?skipRedirect=true" target="_blank">LinkedIn</a>
+      <a href="https://github.com/geetabhimsenmaharana" target="_blank">GitHub</a>
+      <a href="mailto:maharana.g@northeastern.edu">Email</a>
+    </div>
+
+    <div class="footer-contact">
+      <a href="mailto:maharana.g@northeastern.edu">maharana.g@northeastern.edu</a>
+      &nbsp;·&nbsp;
+      <a href="tel:+18574215866">+1 857-421-5866</a>
+    </div>
+
+    <div class="footer-tagline">Built with curiosity</div>
+
+    <div class="footer-name">Good ELT doesn’t rush to clean data. It lands everything first, raw and complete, and trusts the warehouse to shape it. Store now, transform later — but never lose the original truth.</div>
+
+  </footer>
+
+
+</body>

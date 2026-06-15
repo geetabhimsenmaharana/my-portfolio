@@ -1,564 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Geeta Maharana</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<title>Welcome</title>
 
-    :root {
-      --bg: #0a192f;
-      --accent: #64ffda;
-      --text: #ccd6f6;
-      --muted: #8892b0;
-      --dim: #495670;
-      --surface: #112240;
-      --border: #1e3a5f;
-    }
-
-    html, body {
-      height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Trebuchet MS', sans-serif;
-      overflow-x: hidden;
-    }
-
-    canvas#bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.6rem 4rem;
-      background: rgba(10,25,47,0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(100,255,218,0.06);
-    }
-
-    .nav-logo {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .hero-tag {
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #ffffff;
-      background: rgba(100,255,218,0.12);
-      border: 1px solid rgba(100,255,218,0.4);
-      padding: 0.55rem 1.4rem;
-      border-radius: 100px;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 0.2s;
-    }
-
-    .hero-headline {
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 0.4s;
-    }
-
-    .hero-headline .accent { color: var(--accent); }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      color: var(--dim);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      margin-bottom: 4rem;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 0.6s;
-    }
-
-    .hero-statement {
-      max-width: 600px;
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 0.75s;
-    }
-
-    .hero-wip {
-      max-width: 520px;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--dim);
-      font-style: italic;
-      margin-bottom: 3.5rem;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 0.85s;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1.25rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: rise 0.8s cubic-bezier(.16,1,.3,1) forwards 1s;
-    }
-
-    .btn-primary {
-      padding: 1rem 2.5rem;
-      background: var(--accent);
-      color: var(--bg);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: opacity 0.2s, transform 0.2s;
-      font-family: 'Trebuchet MS', sans-serif;
-    }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
-
-    .btn-ghost {
-      padding: 1rem 2.5rem;
-      border: 1px solid rgba(100,255,218,0.3);
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.2s;
-      font-family: 'Trebuchet MS', sans-serif;
-    }
-    .btn-ghost:hover { background: rgba(100,255,218,0.06); transform: translateY(-2px); }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--dim);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: rise 1s ease forwards 1.4s;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
-    }
-
-    /* ── METRICS ── */
-    .metrics {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: rgba(17,34,64,0.5);
-      backdrop-filter: blur(10px);
-    }
-
-    .metric {
-      padding: 3rem 2rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      opacity: 0;
-      animation: rise 0.7s ease forwards;
-    }
-    .metric:nth-child(1) { animation-delay: 1.1s; }
-    .metric:nth-child(2) { animation-delay: 1.2s; }
-    .metric:nth-child(3) { animation-delay: 1.3s; }
-    .metric:nth-child(4) { animation-delay: 1.4s; border-right: none; }
-
-    .metric-number {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .metric-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-
-    /* ── SKILLS SECTION ── */
-    .skills-section {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 7rem 2rem;
-      opacity: 0;
-      animation: rise 0.8s ease forwards 1.5s;
-    }
-
-    .section-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-    }
-
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--muted);
-      max-width: 620px;
-      margin-bottom: 3rem;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .tag {
-      padding: 0.55rem 1.1rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      transition: all 0.2s;
-      cursor: default;
-    }
-
-    .tag:hover, .tag.lit {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(100,255,218,0.05);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      font-family: 'Trebuchet MS', sans-serif;
-      text-align: center;
-      padding: 3.5rem 2rem;
-      border-top: 1px solid var(--border);
-      background: rgba(17,34,64,0.3);
-    }
-
-    footer::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 2px;
-      background: var(--accent);
-      margin: 0 auto 2rem;
-    }
-
-    .footer-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-
-    .footer-location {
-      font-size: 0.72rem;
-      color: var(--dim);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.75rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.25rem;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .footer-links a:hover { border-color: var(--accent); color: var(--accent); }
-
-    .footer-contact {
-      font-size: 0.78rem;
-      color: var(--dim);
-      margin-bottom: 0.3rem;
-    }
-
-    .footer-contact a {
-      color: var(--dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-contact a:hover { color: var(--accent); }
-
-    .footer-tagline {
-      font-size: 0.65rem;
-      color: var(--border);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-top: 1.75rem;
-    }
-
-    /* ── ANIMATION ── */
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 640px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .metrics { grid-template-columns: repeat(2, 1fr); }
-      .metric:nth-child(2) { border-right: none; }
-      .metric:nth-child(3) { border-right: 1px solid var(--border); }
-    }
-  </style>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <canvas id="bg"></canvas>
+<div class="entry">
 
-  <nav>
-    <a class="nav-logo" href="index.html">GM</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="skills.html">Skills</a></li>
-    </ul>
-  </nav>
+  <div class="entry-card">
 
-  <!-- HERO -->
-  <section class="hero">
-<br>
-    <h1 class="hero-headline"><span class="accent">G</span></h1>
-    <p class="hero-sub">I turn messy data into clarity.</p>    
-    <p class="hero-statement">
-      A product and analytics professional with hands-on experience in ETL pipelines,
-      complex systems, and ML tooling. This site is a living record of what I know and how I apply it.
+    <div class="brand">GM</div>
+
+    <h1 class="fade1">Welcome</h1>
+
+    <p class="fade2">
+      A small space for my work, experiments, and ideas.
     </p>
 
-        <div class="hero-tag">Boston, MA &nbsp;·&nbsp; Product · Analytics · Data Engineering</div>
-
-    <p class="hero-wip">
-      Work in progress — updated weekly as I build, learn, and document new projects.
-      A few items today. More every week. Come back soon.
+    <p class="hint fade2">
+      Enter your name or continue anonymously.
     </p>
 
-    <div class="hero-cta">
-      <a href="skills.html" class="btn-primary">Explore Skills</a>
-      <a href="https://www.linkedin.com/in/geetabhimsenmaharana/?skipRedirect=true" target="_blank" class="btn-ghost">LinkedIn ↗</a>
-      <a href="https://github.com/geetabhimsenmaharana" target="_blank" class="btn-ghost">GitHub ↗</a>
-    </div>
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      Scroll
-    </div>
-  </section>
+    <input
+      id="visitorName"
+      class="input fade3"
+      type="text"
+      placeholder="Your name (optional)"
+    />
 
-  <!-- METRICS -->
-  <div class="metrics">
-    <div class="metric">
-      <span class="metric-number">120+</span>
-      <span class="metric-label">Files Automated</span>
+    <div class="buttons fade3">
+
+      <button class="primary" onclick="saveVisitor()">
+        Enter
+      </button>
+
+      <button class="secondary" onclick="skipVisitor()">
+        Skip
+      </button>
+
     </div>
-    <div class="metric">
-      <span class="metric-number">50%</span>
-      <span class="metric-label">Manual Effort Reduced</span>
-    </div>
-    <div class="metric">
-      <span class="metric-number">~100%</span>
-      <span class="metric-label">Processing Accuracy</span>
-    </div>
-    <div class="metric">
-      <span class="metric-number">3+</span>
-      <span class="metric-label">Domains of Expertise</span>
-    </div>
+
+    <div id="status" class="status"></div>
+
   </div>
 
-  <!-- SKILLS -->
-  <section class="skills-section">
-    <div class="section-eyebrow">My Top Skills</div>
-    <h2 class="section-title">I take messy data and automate it —<br>efficiently, reliably, at scale.</h2>
-    <p class="section-body">
-      From raw, inconsistent spreadsheets to clean, automated pipelines — I build systems that eliminate
-      manual effort and deliver trusted data. My toolkit spans automation, engineering, and analytics.
-    </p>
-    <div class="skill-tags">
-      <span class="tag lit">ETL Pipelines</span>
-      <span class="tag lit">Python</span>
-      <span class="tag lit">SQL</span>
-      <span class="tag lit">VBA Macros</span>
-      <span class="tag lit">UiPath</span>
-      <span class="tag">Google Apps Script</span>
-      <span class="tag">Process Automation</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Data Analytics</span>
-      <span class="tag">AWS S3</span>
-      <span class="tag">DynamoDB</span>
-      <span class="tag">PostgreSQL</span>
-      <span class="tag">Batch Processing</span>
-      <span class="tag">Data Validation</span>
-      <span class="tag">Product Management</span>
-    </div>
-  </section>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-name">Geeta Maharana</div>
-    <div class="footer-location">Boston, MA</div>
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/geetabhimsenmaharana/?skipRedirect=true" target="_blank">LinkedIn</a>
-      <a href="https://github.com/geetabhimsenmaharana" target="_blank">GitHub</a>
-      <a href="mailto:maharana.g@northeastern.edu">Email</a>
-    </div>
-    <div class="footer-contact">
-      <a href="mailto:maharana.g@northeastern.edu">maharana.g@northeastern.edu</a>
-      &nbsp;·&nbsp;
-      <a href="tel:+18574215866">+1 857-421-5866</a>
-    </div>
-    <div class="footer-name">Built with curiosity</div>
+<script>
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-LrWfhyGX3fmXucsJG08svBRf4eyEPffAKLhLIoTFSWm1j2G87LPT4vzTLAJWHpYXDA/exec";
 
-  </footer>
+async function saveVisitor() {
 
-  <script>
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-    let pts = [];
+  const name = document.getElementById("visitorName").value;
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+  document.getElementById("status").innerText = "Saving...";
 
-    function init() {
-      pts = [];
-      const n = Math.floor((canvas.width * canvas.height) / 15000);
-      for (let i = 0; i < n; i++) {
-        pts.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          r: Math.random() * 1 + 0.4,
-          o: Math.random() * 0.35 + 0.05
-        });
-      }
-    }
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name: name || "Anonymous",
+        page: window.location.pathname
+      })
+    });
 
-    function tick() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(100,255,218,${p.o})`;
-        ctx.fill();
-        for (let j = i + 1; j < pts.length; j++) {
-          const q = pts[j];
-          const dx = p.x - q.x, dy = p.y - q.y;
-          const d = Math.sqrt(dx*dx + dy*dy);
-          if (d < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(100,255,218,${0.07 * (1 - d/120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(tick);
-    }
+    const text = await res.text();
+    console.log("Response:", text);
 
-    resize(); init(); tick();
-    window.addEventListener('resize', () => { resize(); init(); });
-  </script>
+    document.getElementById("status").innerText = "Saved! Redirecting...";
+
+  } catch (err) {
+    console.log(err);
+    document.getElementById("status").innerText = "Error saving data";
+  }
+
+  setTimeout(() => {
+    window.location.href = "portfolio.html";
+  }, 800);
+}
+
+function skipVisitor() {
+  window.location.href = "portfolio.html";
+}
+
+</script>
 
 </body>
 </html>

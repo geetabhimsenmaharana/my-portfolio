@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Modeling & Star Schema | Geeta Maharana</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">GM</a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+  </ul>
+</nav>
+
+<div class="detail-container">
+
+  <div class="breadcrumb">
+    <a href="skills.html">Skills</a>
+    &nbsp;/&nbsp;
+    Data Engineering
+    &nbsp;/&nbsp;
+    Data Modeling
+
+  </div>
+
+
+  <h1>Data Modeling</h1>
+  <span class="detail-tag">Data Modeling</span>
+
+
+
+  <!-- WHAT IS Data Modeling -->
+  <div class="detail-section">
+    <h2>What It Means (Simple Explanation)</h2>
+    <p>
+      Data modeling is the process of organizing business information in a way that makes it easy to store, understand, and answer questions from the data.
+      <br>
+      Think of it like designing a library. Before placing books on shelves, you decide how they should be organized so people can quickly find what they need. Data modeling does the same thing for data.
+    </p>
+    <br>
+    <h2>What It Means (Technical Explanation)</h2>
+    <p>Data modeling is the process of defining how data entities, relationships, attributes, and business events are structured within a database or data warehouse to support efficient storage, querying, reporting, and analytics.</p>
+<br>
+
+<br>
+  <h1>Key Data Modeling Framework</h1>
+
+</div>
+  <!-- DIAGRAM -->
+  <div class="etl-diagram">
+    
+    <div class="etl-step">
+      <div class="step-label"></div>
+      <div class="step-name">Understand Business Process</div>
+    </div>
+   <div class="etl-arrow"> & </div>
+       <div class="etl-step">
+        <div class="step-label"></div>
+        <div class="step-name">Define Grain</div>
+      </div>
+
+    <div class="etl-arrow"> & </div>
+    <div class="etl-step">
+      <div class="step-label"></div>
+      <div class="step-name">Identify Facts</div>
+    </div>
+
+    <div class="etl-arrow"> & </div>
+    <div class="etl-step">
+      <div class="step-label"></div>
+      <div class="step-name">Identify Dimensions</div>
+    </div>
+
+    <div class="etl-step">
+      <div class="step-label"></div>
+      <div class="step-name">Build Star Schema</div>
+    </div>
+
+</div>
+    <br>
+    <h1>Simple Mental Model</h1>
+      <div class="detail-section">
+        <p><strong>Fact Table</strong> = What happened?</p>
+       <p><strong>Dimension Table</strong> = Who, What, Where, When?</p>
+       <p><strong>Grain</strong> = What does one row represent?</p>
+       <p><strong>Star Schema</strong> = How everything connects together for reporting.</p>
+       <p><strong>Data Modeling</strong> = Designing all of the above so the business can answer questions from data efficiently.</p>
+  
+    </div>
+
+  
+  <!-- MY EXPERIENCE -->
+
+  <div class="detail-section">
+    <br>
+    <hr>    <hr>
+    <br>
+    <h1>REAL PROJECT EXAMPLE</h1>
+    <h2>Pest Control Service Data Warehouse</h2>
+    <br>
+    <hr>    <hr>
+    <br>
+  
+  <div class="detail-section">
+    <p>Good data modeling starts with understanding the business process,
+      and also writing SQL.</p>
+  </div>
+
+    I was asked to design a data model that would improve reporting and analytics for business stakeholders. Below is the approach I followed using the STAR framework.
+
+
+
+<div class="answer-block">
+
+  <h3>S — Situation</h3>
+
+  <p>
+    At Pest Control India (PCI), I worked as a SQL Analyst supporting reporting and analytics initiatives. Business stakeholders needed better visibility into service performance, customer behavior, revenue trends, and operational metrics. However, the raw operational data was spread across multiple tables and was not optimized for reporting or analysis.
+  </p>
+
+  <h3>T — Task</h3>
+
+  <p>
+    My responsibility was to design a scalable data model that would allow analysts, business users, and reporting tools to efficiently answer business questions such as:
+  </p>
+
+  <ul>
+      <li>What is the total revenue generated?</li>
+      <li>Which services are generating the most revenue?</li>
+      <li>Who are the highest-value customers?</li>
+      <li>How do revenue and service trends change over time?</li>
+      <li>Which regions or branches perform the best?</li>
+      
+  </ul>
+
+  <h3>A — Action</h3>
+
+  <p>
+    I began by understanding the business process before designing any tables.
+    <br>
+    First, I identified the primary business event. In this case, the key event was a customer receiving a pest control service. immediately creating tables.
+  </p>
+
+  <p>
+      Next, I defined the grain of the fact table.
+  </p>
+
+  <blockquote>
+      One row represents one product purchased within an order.
+  </blockquote>
+
+  <p>
+      Defining the grain early ensures consistency and prevents future
+      reporting issues.
+  </p>
+<br>
+  <p>
+      After defining the grain, I identified the fact table and
+      dimensions.
+  </p>
+<br>
+
+<p>
+  Finally, I would organize the warehouse using a Star Schema where
+  the fact table sits at the center and dimension tables provide
+  business context.
+</p>
+
+<h3>R — Result</h3>
+
+<p>
+  The resulting model would provide a clean, scalable structure for
+  analytics and reporting. Business users could easily analyze
+  revenue, product performance, customer behavior, and sales trends
+  without querying complex operational systems.
+</p>
+
+<p>
+  The model would also support future growth by allowing additional
+  dimensions and metrics to be incorporated while maintaining
+  reporting consistency and query performance.
+</p>
+
+</div>
+
+<div class="takeaway-block">
+  <br>
+
+<h2>Key Data Modeling Thought Process</h2>
+
+<p>
+  Business Process → Define Grain → Identify Facts →
+  Identify Dimensions → Build Star Schema
+</p>
+
+<p>
+  This is the framework I follow whenever designing a data model.
+</p>
+
+
+
+
+
+
+
+  <div class="detail-section">
+    <br>
+
+    <h2>Step 1: Understand the Business Process</h2>
+
+    <div class="process-flow">
+
+      <div class="flow-box">Customer</div>
+      <div class="flow-arrow">↓</div>
+
+      <div class="flow-box">Service Request</div>
+      <div class="flow-arrow">↓</div>
+
+      <div class="flow-box">Technician Assigned</div>
+      <div class="flow-arrow">↓</div>
+
+      <div class="flow-box">Service Completed</div>
+      <div class="flow-arrow">↓</div>
+
+      <div class="flow-box">Invoice Generated</div>
+      <div class="flow-arrow">↓</div>
+
+      <div class="flow-box">Payment Collected</div>
+
+    </div>
+
+    <p>
+      <br>Every step generates data. The goal of a warehouse is to organize
+      that data so the<h2> business can answer questions efficiently.</h2>
+    </p>
+
+  </div>
+
+  <div class="detail-section">
+
+    <h2>Step 2: Business Questions</h2>
+
+    <h3>Revenue Questions</h3>
+
+    <ul>
+      <li>Total revenue this month?</li>
+      <li>Revenue by city?</li>
+      <li>Revenue by service type?</li>
+    </ul>
+
+    <h3>Operations Questions</h3>
+
+    <ul>
+      <li>How many services were completed?</li>
+      <li>Which technician completed the most jobs?</li>
+      <li>Which locations generate the most business?</li>
+    </ul>
+
+    <h3>Customer Questions</h3>
+
+    <ul>
+      <li>Which customers spend the most?</li>
+      <li>How many repeat customers do we have?</li>
+    </ul>
+
+  </div>
+
+  <div class="detail-section">
+
+    <h2>Step 3: Define the Grain</h2>
+
+    <div class="grain-box">
+      One row in the fact table represents one completed service order.
+    </div>
+
+    <p>
+      This is the most important decision in dimensional modeling.
+      Every measure and dimension must align to this grain.
+    </p>
+
+  </div>
+
+  <div class="detail-section">
+    <h2>Step 4: Fact Table</h2>
+
+    <div class="schema-card">
+
+      <h3>fact_service_order</h3>
+
+      <ul>
+        <li>service_order_id</li>
+        <li>customer_id</li>
+        <li>technician_id</li>
+        <li>service_id</li>
+        <li>location_id</li>
+        <li>date_id</li>
+        <li>revenue</li>
+        <li>quantity</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="detail-section">
+
+    <h2>Step 5: Dimension Tables</h2>
+
+    <div class="dimension-grid">
+
+      <div class="schema-card">
+        <h3>dim_customer</h3>
+        <p>Customer Name</p>
+        <p>Customer Type</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>dim_service</h3>
+        <p>Service Name</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>dim_technician</h3>
+        <p>Technician</p>
+        <p>Region</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>dim_location</h3>
+        <p>City</p>
+        <p>State</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>dim_date</h3>
+        <p>Month</p>
+        <p>Quarter</p>
+        <p>Year</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="detail-section">
+
+    <h2>Step 6: Star Schema</h2>
+
+<pre class="star-schema">
+                 dim_customer
+                        |
+                        |
+dim_service ---- fact_service_order ---- dim_technician
+                        |
+                        |
+                    dim_date
+                        |
+                        |
+                  dim_location
+</pre>
+
+  </div>
+
+  <div class="detail-section">
+
+    <h2>Why This Design Works</h2>
+
+    <ul>
+      <li>Faster analytical queries</li>
+      <li>Reduced storage requirements</li>
+      <li>Improved reporting performance</li>
+      <li>Better data quality and governance</li>
+      <li>Reusable dimensional model</li>
+    </ul>
+
+  </div>
+  <section class="content-section">
+
+    <div class="detail-section">
+      <br>
+      <hr>    <hr>
+      <br>
+    <h1>Fact Table</h1>
+
+    <h2>What It Means (Simple Explanation)</h2>
+
+    <p>
+        A fact table stores the activities or events that happen in a business.
+    </p>
+
+    <p>
+        Think of it as a record of <strong>"what happened."</strong>
+    </p>
+
+    <p>Examples:</p>
+
+    <ul>
+        <li>A customer placed an order</li>
+        <li>A technician completed a service</li>
+        <li>A payment was received</li>
+        <li>A product was sold</li>
+    </ul>
+
+    <p>
+        If something happened and can be measured, it usually belongs in a fact table.
+    </p>
+<br>
+    <h2>What It Means (Technical Explanation)</h2>
+
+    <p>
+        A fact table stores measurable business events and typically contains numeric metrics along with foreign
+        keys that connect to dimension tables.
+    </p>
+
+    <p>Examples of measures include:</p>
+
+    <ul>
+        <li>Revenue</li>
+        <li>Quantity</li>
+        <li>Cost</li>
+        <li>Profit</li>
+    </ul>
+
+    <p>Examples of keys include:</p>
+
+    <ul>
+        <li>Customer_ID</li>
+        <li>Product_ID</li>
+        <li>Date_ID</li>
+    </ul>
+<br>
+    <hr>    <hr>
+<br>
+    <h1>Dimension Table</h1>
+
+    <h2>What It Means (Simple Explanation)</h2>
+
+    <p>
+        A dimension table provides details about the people, products, locations, or things involved in an event.
+    </p>
+
+    <p>
+        Think of it as information that helps explain the fact.
+    </p>
+<br>
+    <p>If the fact answers:</p>
+
+    <blockquote>
+        "What happened?"
+    </blockquote>
+<br>
+    <p>The dimension answers:</p>
+
+    <ul>
+        <li>Who?</li>
+        <li>What?</li>
+        <li>Where?</li>
+        <li>When?</li>
+    </ul>
+
+    <h2>What It Means (Technical Explanation)</h2>
+
+    <p>
+        A dimension table stores descriptive attributes that provide business context for facts and are joined
+        to fact tables using keys.
+    </p>
+
+    <p><strong>Customer Dimension:</strong></p>
+
+    <ul>
+        <li>Customer Name</li>
+        <li>Customer Type</li>
+        <li>City</li>
+    </ul>
+
+    <p><strong>Product Dimension:</strong></p>
+
+    <ul>
+        <li>Product Name</li>
+        <li>Category</li>
+        <li>Brand</li>
+    </ul>
+
+    <p><strong>Technician Dimension:</strong></p>
+
+    <ul>
+        <li>Technician Name</li>
+        <li>Region</li>
+    </ul>
+<br>
+    <hr>    <hr>
+    <br>
+
+    <h1>Grain</h1>
+
+    <h2>What It Means (Simple Explanation)</h2>
+
+    <p>
+        Grain defines exactly what one row of data represents.
+    </p>
+    <br>
+
+    <p>
+        Before building any table, you must answer:
+    </p>
+
+    <blockquote>
+        "What does a single row mean?"
+    </blockquote>
+<br>
+    <p>For example:</p>
+
+    <ul>
+        <li>One row = One customer order</li>
+        <li>One row = One service visit</li>
+        <li>One row = One product sold</li>
+    </ul>
+
+    <p>
+        Grain is the foundation of a good data model.
+    </p>
+<br>
+    <h2>What It Means (Technical Explanation)</h2>
+
+    <p>
+        Grain is the lowest level of detail represented by a record in a fact table and defines the uniqueness
+        and business meaning of each row.
+    </p>
+
+    <p>
+        A clearly defined grain prevents duplicate records, incorrect aggregations, and inaccurate reporting.
+    </p>
+<br>
+    <hr>    <hr>
+<br>
+    <h1>Star Schema</h1>
+
+    <h2>What It Means (Simple Explanation)</h2>
+
+    <p>
+        A star schema is a way of organizing data where one central table stores business events and several
+        surrounding tables store descriptive information.
+    </p>
+
+    <p>
+        It looks like a star.
+    </p>
+
+    <ul>
+        <li>The center contains what happened.</li>
+        <li>The surrounding tables explain the details.</li>
+    </ul>
+
+    <p>
+        This structure makes reporting and analysis easier.
+    </p>
+
+    <h2>What It Means (Technical Explanation)</h2>
+
+    <p>
+        A star schema is a dimensional modeling design pattern consisting of a central fact table connected
+        directly to multiple dimension tables through foreign key relationships.
+    </p>
+
+    <p>
+        The model is optimized for analytical workloads, reporting, aggregation, and business intelligence tools
+        such as Power BI, Tableau, and Looker.
+    </p>
+    
+</div>
+</section>
+
+
+
+  <div class="detail-section">
+
+    <h2>Key Learnings</h2>
+
+    <ul>
+      <li>Identify business processes before designing tables</li>
+      <li>Define the grain first</li>
+      <li>Separate facts from dimensions</li>
+      <li>Design for analytics, not transactions</li>
+      <li>Build scalable star schemas for reporting</li>
+    </ul>
+
+  </div>
+
+</div>
+
+
+<footer>
+  <div class="footer-name">Geeta Maharana</div>
+  <div class="footer-location">Boston, MA</div>
+
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/geetabhimsenmaharana/?skipRedirect=true" target="_blank">LinkedIn</a>
+    <a href="https://github.com/geetabhimsenmaharana" target="_blank">GitHub</a>
+    <a href="mailto:maharana.g@northeastern.edu">Email</a>
+  </div>
+
+  <div class="footer-contact">
+    <a href="mailto:maharana.g@northeastern.edu">maharana.g@northeastern.edu</a>
+    &nbsp;·&nbsp;
+    <a href="tel:+18574215866">+1 857-421-5866</a>
+  </div>
+
+  <div class="footer-tagline">Built with curiosity</div>
+
+  <div class="footer-name">A strong data model makes data easy to trust, easy to query, and easy to scale.</div>
+
+</footer>
+
+</body>
+</html>

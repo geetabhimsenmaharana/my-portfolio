@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OLTP vs OLAP | Data Engineering</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">GM</a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+  </ul>
+</nav>
+
+<div class="detail-container">
+
+  <div class="breadcrumb">
+    <a href="skills.html">Skills</a>
+    &nbsp;/&nbsp;
+    Data Engineering
+    &nbsp;/&nbsp;
+    OLTP vs OLAP
+  </div>
+
+  <h1>OLTP vs OLAP, Normalization & SCD</h1>
+  <span class="detail-tag">Core Data Engineering Concepts</span>
+
+  <!-- ================= OLTP vs OLAP ================= -->
+  <div class="detail-section">
+
+    <h2>1. OLTP vs OLAP</h2>
+
+    <h3>OLTP — Running the Business</h3>
+    <p>
+      OLTP systems handle day-to-day transactions like bookings, updates, and payments.
+    </p>
+
+    <div class="schema-card">
+      <h3>orders (OLTP table)</h3>
+      <p>order_id | customer_id | service | status</p>
+      <p>101 | 1 | Termite | Completed</p>
+    </div>
+
+    <p><strong>Purpose:</strong> Store and update live business activity</p>
+
+    <h3>OLAP — Understanding the Business</h3>
+    <p>
+      OLAP systems are used for analytics and reporting.
+    </p>
+
+    <ul>
+      <li>Revenue by city</li>
+      <li>Monthly service trends</li>
+      <li>Technician performance</li>
+    </ul>
+
+    <p><strong>Purpose:</strong> Analyze business performance</p>
+
+    <div class="grain-box">
+      OLTP captures data → OLAP analyzes data
+    </div>
+
+  </div>
+
+  <!-- ================= NORMALIZATION ================= -->
+  <div class="detail-section">
+
+    <h2>2. Normalization vs Denormalization</h2>
+
+    <h3>Normalization (OLTP)</h3>
+
+    <p>Data is split to avoid duplication and improve integrity.</p>
+
+    <div class="dimension-grid">
+
+      <div class="schema-card">
+        <h3>customer</h3>
+        <p>1 | John</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>order</h3>
+        <p>101 | 1 | Termite</p>
+      </div>
+
+    </div>
+
+    <p><strong>Purpose:</strong> Clean storage, fast updates</p>
+
+    <h3>Denormalization (OLAP)</h3>
+
+    <div class="schema-card">
+      <h3>fact_service_order</h3>
+      <p>101 | John | Boston | 300</p>
+    </div>
+
+    <p><strong>Purpose:</strong> Fast reporting (fewer joins)</p>
+
+    <div class="grain-box">
+      Normalize for storage → Denormalize for analytics
+    </div>
+
+  </div>
+
+  <!-- ================= SCD ================= -->
+  <div class="detail-section">
+
+    <h23. Slowly Changing Dimensions (SCD)</h2>
+
+    <p>Used to track changes in data over time while preserving history.</p>
+
+    <h3>Example: Customer changes city</h3>
+
+    <div class="dimension-grid">
+
+      <div class="schema-card">
+        <h3>Before</h3>
+        <p>1 | Boston</p>
+      </div>
+
+      <div class="schema-card">
+        <h3>After</h3>
+        <p>1 | New York</p>
+      </div>
+
+    </div>
+
+    <h3>CD Type 1 (Overwrite)</h3>
+
+    <div class="schema-card">
+      <p>1 | New York</p>
+    </div>
+
+    <p>Old data is lost</p>
+
+    <h3>SCD Type 2 (History preserved)</h3>
+
+    <div class="schema-card">
+      <p>1 | Boston | Jan–Jun</p>
+      <p>1 | New York | Jun–NULL</p>
+    </div>
+
+    <p>Full history preserved</p>
+
+    <h3>>SCD Type 3 (Partial history)</h3>
+
+    <div class="schema-card">
+      <p>1 | New York | Boston</p>
+    </div>
+
+  </div>
+
+  <!-- ================= FULL SYSTEM ================= -->
+  <div class="detail-section">
+
+    <h2>🔗 Full System: Pest Control Analytics</h2>
+
+    <h3>1. OLTP Layer</h3>
+
+    <div class="schema-card">
+      <p>order_id | customer_id | service | status</p>
+      <p>101 | 1 | Termite | Done</p>
+    </div>
+
+    <p>Normalized transactional system</p>
+
+    <h3>2. ETL / ELT Pipeline</h3>
+    <div class="grain-box">
+      Moves data from OLTP → OLAP warehouse
+    </div>
+
+    <h3>3. OLAP Warehouse</h3>
+
+    <div class="schema-card">
+      <h3>Fact Table</h3>
+      <p>order_id | customer_id | revenue</p>
+      <p>101 | 1 | 300</p>
+    </div>
+
+    <div class="schema-card">
+      <h3>Dimension (SCD2)</h3>
+      <p>1 | Boston | 2023–2025</p>
+      <p>1 | New York | 2025–NULL</p>
+    </div>
+
+  </div>
+
+  <!-- ================= SUMMARY ================= -->
+  <div class="detail-section">
+
+    <h2>⚡ Final Summary</h2>
+
+    <ul>
+      <li><strong>OLTP</strong> — runs the business</li>
+      <li><strong>OLAP</strong> — understands the business</li>
+      <li><strong>Normalization</strong> — clean storage</li>
+      <li><strong>Denormalization</strong> — fast analytics</li>
+      <li><strong>SCD</strong> — tracks history over time</li>
+    </ul>
+
+    <div class="grain-box">
+      OLTP stores live data → ETL moves it → OLAP analyzes it → SCD preserves history
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-name">Geeta Maharana</div>
+  <div class="footer-location">Boston, MA</div>
+  <div class="footer-tagline">Built with curiosity</div>
+</footer>
+
+</body>
+</html>
